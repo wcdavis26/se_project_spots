@@ -4,7 +4,7 @@
 
 .card__image {
   height: 413px;
-  width: 413px;
+  width: 100%;
   object-fit: cover;
   display: block;
   border-radius: 8px;
@@ -36,4 +36,33 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+
+@media screen and (max-width: 627px) {
+  .card {
+    height: 288px;
+    width: 288px;
+    justify-self: center;
+  }
+
+  .card__content {
+    align-items: center;
+    margin-top: 12px;
+    height: 18px;
+  }
+
+  .card__image {
+    height: 288px;
+    width: 288px;
+  }
+
+  .card__title {
+    font-size: 16px;
+  }
+
+  .card__like-button {
+    width: 20px;
+    height: 18px;
+    background-size: contain;
+  }
 }
