@@ -13,3 +13,5 @@ Spots is a simple, responsive image gallery webpage built using HTML and CSS. It
 This webpage is deployed to github pages:
 
 [Deployment Link](https://wcdavis26.github.io/se_project_spots/)
+
+[Project Video Link](https://drive.google.com/file/d/1NYgE-7MhAqbkHl3cGrTshLaerSLIfzK4/view?usp=sharing)
