@@ -74,6 +74,9 @@
   height: 40px;
   opacity: 0.4;
   border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal__close-btn:hover {
