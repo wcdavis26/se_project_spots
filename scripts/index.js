@@ -28,6 +28,8 @@ console.log(profileDescription.textContent);
 
 //Functions to open and close modals
 editProfileButton.addEventListener("click", function () {
+  editProfileNameInput.value = profileName.textContent;
+  editProfileDescriptionInput.value = profileDescription.textContent;
   editProfileModal.classList.add("modal_is-opened");
 });
 
