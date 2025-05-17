@@ -1,3 +1,30 @@
+const initialCards = [
+  {
+    name: "Card 1",
+    link: "https://unsplash.com/photos/a-woman-walking-down-a-hallway-carrying-a-purse-g9zdA7DwZsI",
+  },
+  {
+    name: "Card 2",
+    link: "https://unsplash.com/photos/a-woman-leaning-against-a-wall-next-to-a-lamp-nmx6yNexYjs",
+  },
+  {
+    name: "Card 3",
+    link: "https://unsplash.com/photos/a-woman-sitting-on-the-ground-holding-a-white-purse-mW4idHBHyNM",
+  },
+  {
+    name: "Card 4",
+    link: "https://unsplash.com/photos/a-woman-wearing-a-necklace-and-a-pair-of-glasses-HAveDrvcotk",
+  },
+  {
+    name: "Card 5",
+    link: "https://unsplash.com/photos/a-woman-squatting-down-holding-a-purse-ipi7AbrLusE",
+  },
+  {
+    name: "Card 6",
+    link: "https://unsplash.com/photos/a-woman-with-a-mask-on-her-face-hLHgE5geExc",
+  },
+];
+
 const editProfileButton = document.querySelector(".profile__edit-button");
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const editProfileModalCloseButton =
@@ -68,3 +95,8 @@ function handleNewPostSubmit(event) {
 }
 
 newPostForm.addEventListener("submit", handleNewPostSubmit);
+
+initialCards.forEach(function (card) {
+  const cardName = card.name;
+  console.log(cardName);
+});
