@@ -1,27 +1,27 @@
 const initialCards = [
   {
     name: "Card 1",
-    link: "https://unsplash.com/photos/a-woman-walking-down-a-hallway-carrying-a-purse-g9zdA7DwZsI",
+    link: "https://images.unsplash.com/photo-1740032004326-b0337f216f05?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     name: "Card 2",
-    link: "https://unsplash.com/photos/a-woman-leaning-against-a-wall-next-to-a-lamp-nmx6yNexYjs",
+    link: "https://images.unsplash.com/photo-1740032004135-fa85cedffbde?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     name: "Card 3",
-    link: "https://unsplash.com/photos/a-woman-sitting-on-the-ground-holding-a-white-purse-mW4idHBHyNM",
+    link: "https://images.unsplash.com/photo-1740032004036-8fa4a7f51360?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     name: "Card 4",
-    link: "https://unsplash.com/photos/a-woman-wearing-a-necklace-and-a-pair-of-glasses-HAveDrvcotk",
+    link: "https://images.unsplash.com/photo-1740032004098-667fdcfadd85?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     name: "Card 5",
-    link: "https://unsplash.com/photos/a-woman-squatting-down-holding-a-purse-ipi7AbrLusE",
+    link: "https://images.unsplash.com/photo-1740032004181-e64c87ed11e3?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     name: "Card 6",
-    link: "https://unsplash.com/photos/a-woman-with-a-mask-on-her-face-hLHgE5geExc",
+    link: "https://images.unsplash.com/photo-1740032004434-f9179239e255?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 ];
 
@@ -92,18 +92,39 @@ function handleEditProfileFormSubmit(event) {
 
 editProfileForm.addEventListener("submit", handleEditProfileFormSubmit);
 
+//New post modal
+const cardTemplate = document.querySelector("#card-template").content;
+const cardContainer = document.querySelector(".cards__list");
+
+function getCardElement(data) {
+  const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
+  const cardImage = cardElement.querySelector(".card__image");
+  const cardTitle = cardElement.querySelector(".card__title");
+
+  cardImage.src = data.link;
+  cardImage.alt = data.name;
+  cardTitle.textContent = data.name;
+
+  return cardElement;
+}
+
+initialCards.forEach((card) => {
+  const cardElement = getCardElement(card);
+  cardContainer.prepend(cardElement);
+});
+
 function handleNewPostSubmit(event) {
   event.preventDefault();
 
-  console.log(newPostImageInput.value);
-  console.log(newPostCaptionInput.value);
+  const newCard = getCardElement({
+    name: newPostCaptionInput.value,
+    link: newPostImageInput.value,
+  });
+
+  cardContainer.prepend(newCard);
 
   closeModal(newPostModal);
+  newPostForm.reset();
 }
 
 newPostForm.addEventListener("submit", handleNewPostSubmit);
-
-initialCards.forEach(function (card) {
-  const cardName = card.name;
-  console.log(cardName);
-});
