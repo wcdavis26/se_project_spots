@@ -118,6 +118,33 @@ function getCardElement(data) {
     cardElement.remove();
   });
 
+  // Open image
+  cardImage.addEventListener("click", function () {
+    const previdImageTemplate = document.querySelector(
+      "#preview-image-modal"
+    ).content;
+    const imageModal = previdImageTemplate
+      .querySelector(".modal")
+      .cloneNode(true);
+    document.body.append(imageModal);
+    const imageModalCloseButton = imageModal.querySelector(
+      ".modal__close-btn_preview"
+    );
+    const imageModalImage = imageModal.querySelector(".modal__preview-image");
+    const imageModalCaption = imageModal.querySelector(".modal__image-caption");
+
+    imageModalImage.src = data.link;
+    imageModalImage.alt = data.name;
+    imageModalCaption.textContent = data.name;
+
+    openModal(imageModal);
+
+    imageModalCloseButton.addEventListener("click", function () {
+      closeModal(imageModal);
+      imageModal.remove();
+    });
+  });
+
   return cardElement;
 }
 
