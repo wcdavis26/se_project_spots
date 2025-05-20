@@ -50,8 +50,6 @@ const newPostCaptionInput = newPostModal.querySelector(
 //Elements selected for the profile
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
-console.log(profileName.textContent);
-console.log(profileDescription.textContent);
 
 //Functions to open and close modals
 function closeModal(modal) {
@@ -121,7 +119,7 @@ function getCardElement(data) {
   // Open image
   cardImage.addEventListener("click", function () {
     const previdImageTemplate = document.querySelector(
-      "#preview-image-modal"
+      ".modal modal_type_preview"
     ).content;
     const imageModal = previdImageTemplate
       .querySelector(".modal")
@@ -141,7 +139,6 @@ function getCardElement(data) {
 
     imageModalCloseButton.addEventListener("click", function () {
       closeModal(imageModal);
-      imageModal.remove();
     });
   });
 

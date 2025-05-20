@@ -112,10 +112,9 @@
   opacity: 0.8;
 }
 
-.modal__container_preview {
+.modal__container_type_preview {
   padding: 0;
   background-color: transparent;
-  max-width: 80vw;
   max-height: 80vh;
   width: auto;
   height: auto;
@@ -124,7 +123,7 @@
 }
 
 .modal__preview-image {
-  max-width: 75vw;
+  max-width: 80vw;
   max-height: 75vh;
   object-fit: contain;
 }
@@ -171,6 +170,10 @@
   .modal__close-btn_preview {
     right: 0;
     top: -46px;
+  }
+
+  .modal__preview-image {
+    max-width: 90vw;
   }
 
   .modal__image-caption {
