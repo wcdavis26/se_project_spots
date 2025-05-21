@@ -116,7 +116,6 @@
   padding: 0;
   background-color: transparent;
   max-height: 80vh;
-  width: auto;
   height: auto;
   padding: 0;
   position: relative;
@@ -174,6 +173,7 @@
 
   .modal__preview-image {
     max-width: 90vw;
+    border-radius: 8px;
   }
 
   .modal__image-caption {

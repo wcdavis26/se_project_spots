@@ -47,6 +47,14 @@ const newPostCaptionInput = newPostModal.querySelector(
   "#profile-caption-input"
 );
 
+//Elements for previewing the image
+const previewModal = document.querySelector(".modal_type_preview");
+const previewImage = previewModal.querySelector(".modal__preview-image");
+const previewCaption = previewModal.querySelector(".modal__image-caption");
+const previewCloseButton = previewModal.querySelector(
+  ".modal__close-btn_preview"
+);
+
 //Elements selected for the profile
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
@@ -118,28 +126,12 @@ function getCardElement(data) {
 
   // Open image
   cardImage.addEventListener("click", function () {
-    const previdImageTemplate = document.querySelector(
-      ".modal modal_type_preview"
-    ).content;
-    const imageModal = previdImageTemplate
-      .querySelector(".modal")
-      .cloneNode(true);
-    document.body.append(imageModal);
-    const imageModalCloseButton = imageModal.querySelector(
-      ".modal__close-btn_preview"
-    );
-    const imageModalImage = imageModal.querySelector(".modal__preview-image");
-    const imageModalCaption = imageModal.querySelector(".modal__image-caption");
-
-    imageModalImage.src = data.link;
-    imageModalImage.alt = data.name;
-    imageModalCaption.textContent = data.name;
+    // Set the image source, alt and caption
+    previewImage.src = data.link;
+    previewImage.alt = data.name;
+    previewCaption.textContent = data.name;
 
     openModal(imageModal);
-
-    imageModalCloseButton.addEventListener("click", function () {
-      closeModal(imageModal);
-    });
   });
 
   return cardElement;
@@ -148,6 +140,10 @@ function getCardElement(data) {
 initialCards.forEach((card) => {
   const cardElement = getCardElement(card);
   cardContainer.prepend(cardElement);
+});
+
+previewCloseButton.addEventListener("click", function () {
+  closeModal(previewModal);
 });
 
 function handleNewPostSubmit(event) {
