@@ -119,12 +119,14 @@
   height: auto;
   padding: 0;
   position: relative;
+  max-width: 470px;
 }
 
 .modal__preview-image {
   max-width: 80vw;
   max-height: 75vh;
   object-fit: contain;
+  border-radius: 8px;
 }
 
 .modal__close-btn_preview {

@@ -131,7 +131,7 @@ function getCardElement(data) {
     previewImage.alt = data.name;
     previewCaption.textContent = data.name;
 
-    openModal(imageModal);
+    openModal(previewModal);
   });
 
   return cardElement;
