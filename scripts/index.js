@@ -32,7 +32,7 @@ const editProfileModalCloseButton =
 const newPostButton = document.querySelector(".profile__add-button");
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostModalCloseButton = newPostModal.querySelector(".modal__close-btn");
-
+const allModals = document.querySelectorAll(".modal");
 //selecting the form elements
 const editProfileForm = editProfileModal.querySelector(".modal__form");
 const editProfileNameInput = editProfileModal.querySelector(
@@ -145,6 +145,26 @@ initialCards.forEach((card) => {
 previewCloseButton.addEventListener("click", function () {
   closeModal(previewModal);
 });
+
+allModals.forEach((modal) => {
+  modal.addEventListener("click", function (event) {
+    if (event.target === modal) {
+      closeModal(modal);
+    }
+  });
+});
+
+function handleEscapeKey(event) {
+  if (event.key === "Escape") {
+    allModals.forEach((modal) => {
+      if (modal.classList.contains("modal_is-opened")) {
+        closeModal(modal);
+      }
+    });
+  }
+}
+
+document.addEventListener("keydown", handleEscapeKey);
 
 function handleNewPostSubmit(event) {
   event.preventDefault();
