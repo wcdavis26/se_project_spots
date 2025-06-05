@@ -1,4 +1,4 @@
-import { resetValidation } from "./validation.js";
+import { resetValidation, settings, toggleButtonState } from "./validation.js";
 
 const initialCards = [
   {
@@ -34,7 +34,7 @@ const editProfileModalCloseButton =
 const newPostButton = document.querySelector(".profile__add-button");
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostModalCloseButton = newPostModal.querySelector(".modal__close-btn");
-const allModals = document.querySelectorAll(".modal");
+
 //selecting the form elements
 const editProfileForm = document.forms["edit-profile-modal-form"];
 const editProfileNameInput = editProfileModal.querySelector(
@@ -64,10 +64,7 @@ const profileDescription = document.querySelector(".profile__description");
 //Functions to open and close modals
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
-
-  if (!document.querySelector(".modal_is-opened")) {
-    document.removeEventListener("keydown", handleEscapeKey);
-  }
+  document.removeEventListener("keydown", handleEscapeKey);
 }
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
@@ -79,7 +76,7 @@ editProfileButton.addEventListener("click", function () {
   editProfileDescriptionInput.value = profileDescription.textContent;
 
   openModal(editProfileModal);
-  resetValidation(editProfileForm);
+  resetValidation(editProfileForm, settings);
 });
 
 editProfileModalCloseButton.addEventListener("click", function () {
@@ -87,7 +84,7 @@ editProfileModalCloseButton.addEventListener("click", function () {
 });
 newPostButton.addEventListener("click", function () {
   openModal(newPostModal);
-  resetValidation(newPostForm);
+  resetValidation(newPostForm, settings);
 });
 
 newPostModalCloseButton.addEventListener("click", function () {
@@ -100,8 +97,6 @@ function handleEditProfileFormSubmit(event) {
 
   profileName.textContent = editProfileNameInput.value;
   profileDescription.textContent = editProfileDescriptionInput.value;
-  console.log(profileName.textContent);
-  console.log(profileDescription.textContent);
 
   closeModal(editProfileModal);
 }
@@ -156,9 +151,14 @@ previewCloseButton.addEventListener("click", function () {
   closeModal(previewModal);
 });
 
+const allModals = document.querySelectorAll(".modal");
+
 allModals.forEach((modal) => {
   modal.addEventListener("click", function (event) {
-    if (event.target === modal) {
+    if (
+      event.target === modal ||
+      event.target.classList.contains("modal__close-btn")
+    ) {
       closeModal(modal);
     }
   });
@@ -186,6 +186,11 @@ function handleNewPostSubmit(event) {
 
   closeModal(newPostModal);
   newPostForm.reset();
+  toggleButtonState(
+    newPostForm.querySelectorAll(settings.inputSelector),
+    newPostForm.querySelector(settings.submitButtonSelector),
+    settings
+  );
 }
 
 newPostForm.addEventListener("submit", handleNewPostSubmit);

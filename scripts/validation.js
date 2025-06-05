@@ -15,7 +15,7 @@ export const hideInputError = (formElement, inputElement, config) => {
   errorElement.classList.remove(config.errorActiveClass);
   errorElement.textContent = "";
 };
-export const checkInputValidity = (formElement, inputElement) => {
+export const checkInputValidity = (formElement, inputElement, config) => {
   if (!inputElement.validity.valid) {
     showInputError(
       formElement,
