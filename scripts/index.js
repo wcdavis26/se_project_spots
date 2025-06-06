@@ -84,7 +84,6 @@ editProfileModalCloseButton.addEventListener("click", function () {
 });
 newPostButton.addEventListener("click", function () {
   openModal(newPostModal);
-  resetValidation(newPostForm, settings);
 });
 
 newPostModalCloseButton.addEventListener("click", function () {
